@@ -1,0 +1,12 @@
+{% extends 'BlogBundle:Default:base.html.twig' %}
+{% block title %}Show post{% endblock %}
+{% block posts %}
+    <h2> {{ entry.title }}</h2>
+    <p class="small">Author: {{ entry.user.username }}</p>
+    <p class="small">Added: {{ entry.added|date('d-m-Y H:i:s') }}</p>
+    <p>{{ entry.postcontent }}</p>
+    {% if entry.user.username == app.user.username or is_granted('ROLE_ADMIN') %}
+        <div class="pull-right"><a href="{{ path('postedit', { id: entry.id }) }}" class="btn btn-lg btn-warning"><span
+                        class="glyphicon glyphicon-retweet"></span> Edit post</a></div>
+    {% endif %}
+{% endblock %}
