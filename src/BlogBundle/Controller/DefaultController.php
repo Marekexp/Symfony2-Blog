@@ -24,7 +24,7 @@ class DefaultController extends Controller
         $categories = $this->getDoctrine()->getRepository("BlogBundle:Category")->findAllAlphabetical();
 
         
-        return $this->render('BlogBundle:Default:base.html.twig', array
+        return $this->render('BlogBundle:Default:index.html.twig', array
             ('posts' => $posts,
              'categories' => $categories,
             ));
