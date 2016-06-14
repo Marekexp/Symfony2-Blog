@@ -22,15 +22,25 @@ class PostsController extends Controller
     {
         $entry = $this->getDoctrine()->getRepository("BlogBundle:Post")->find($id);
         $categories = $this->getDoctrine()->getRepository("BlogBundle:Category")->findAllAlphabetical();
-        $user = $this->getUser();
-        $userId = $user->getId();
+        $arr = (array) $this->getUser();
 
+        if(!empty($arr)) {
 
-        return $this->render('BlogBundle:Default:showpost.html.twig', array(
-            'entry' => $entry,
-            'categories' => $categories,
-            'user' => $userId
-        ));
+            $user = $this->getUser();
+            $userId = $user->getId();
+            return $this->render('BlogBundle:Default:showpost.html.twig', array(
+                'entry' => $entry,
+                'categories' => $categories,
+                'user' => $userId
+            ));
+        }
+        else {
+            return $this->render('BlogBundle:Default:showpost.html.twig', array(
+                'entry' => $entry,
+                'categories' => $categories,
+                'user' => 0
+            ));
+        }
 
     }
 
