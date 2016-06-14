@@ -50,7 +50,7 @@ class PostsController extends Controller
     public function showByCategoryAction($cat)
     {
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery('
                 SELECT p, c 
                 FROM BlogBundle:Post p 
