@@ -1,7 +1,0 @@
-blog:
-    resource: "@BlogBundle/Controller/"
-    type:     annotation
-
-logout:
-    path: /logout
-
