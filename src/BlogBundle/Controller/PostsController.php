@@ -56,6 +56,7 @@ class PostsController extends Controller
                 FROM BlogBundle:Post p 
                 JOIN p.category c 
                 WHERE c.name = :cat
+                ORDER BY p.added DESC
         ')->setParameter('cat', $cat);;
         $posts = $query->getResult();
 
