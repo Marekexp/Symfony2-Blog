@@ -50,15 +50,8 @@ class PostsController extends Controller
     public function showByCategoryAction($cat)
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('
-                SELECT p, c 
-                FROM BlogBundle:Post p 
-                JOIN p.category c 
-                WHERE c.name = :cat
-                ORDER BY p.added DESC
-        ')->setParameter('cat', $cat);;
-        $posts = $query->getResult();
+
+        $posts = $this->getDoctrine()->getRepository("BlogBundle:Post")->sortCatByDate($cat);
 
         $categories = $this->getDoctrine()->getRepository("BlogBundle:Category")->findAllAlphabetical();
 
