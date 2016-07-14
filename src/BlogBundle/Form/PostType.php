@@ -15,18 +15,19 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class PostType extends AbstractType {
+class PostType extends AbstractType
+{
 
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
 
 //        $userId = Controller::get('security.token_storage')->getToken()->getUser()->getId();
 
 
         $builder
-            ->add('title', TextType::class, array('attr' => array('autofocus' => true),'label' => 'Title',))
-            ->add('postcontent', TextareaType::class, array('attr' => array('rows' => 15),'label' => 'Content',))
+            ->add('title', TextType::class, array('attr' => array('autofocus' => true), 'label' => 'Title',))
+            ->add('postcontent', TextareaType::class, array('attr' => array('rows' => 15), 'label' => 'Content',))
             ->add('category', EntityType::class, array('class' => 'BlogBundle:Category', 'choice_label' => 'name', 'expanded' => false, 'multiple' => false));
-//            ->add('user', null);
     }
 
     public function configureOptions(OptionsResolver $resolver)
